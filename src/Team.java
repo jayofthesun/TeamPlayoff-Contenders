@@ -22,13 +22,22 @@ class Team {
   }
 
   WorldScene drawPlaces (WorldScene img) {
-    return img.placeImageXY(new OverlayImage(new TextImage(Integer.toString(this.place), Color.BLACK), new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
+    if (this.place >5) {
+    return img.placeImageXY(new OverlayImage(new TextImage(Integer.toString(this.place), Color.BLACK), 
+        new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
         this.x, this.y);
+    } else {
+      return img.placeImageXY(new OverlayImage(new TextImage(Integer.toString(this.place), Color.BLACK), 
+          new OverlayImage (new RectangleImage(this.size, this.size, "outline", Color.BLACK), 
+              new RectangleImage(this.size, this.size, "SOLID", Color.YELLOW))),
+          this.x, this.y);
+    }
 
   }
   
   WorldScene drawNames (WorldScene img) {
-    return img.placeImageXY(new OverlayImage(new TextImage(this.teamName, Color.BLACK), new RectangleImage(this.size, this.size, "outline", Color.BLACK)), x + Utils.BUTTON_SIZE, y);
+    return img.placeImageXY(new OverlayImage(new TextImage(this.teamName, Color.BLACK), 
+        new RectangleImage(this.size, this.size, "outline", Color.BLACK)), x + Utils.BUTTON_SIZE, y);
   }
   //  String getName() {
   //    return this.teamName;

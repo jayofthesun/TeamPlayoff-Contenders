@@ -1,10 +1,14 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 import javalib.funworld.World;
 import javalib.funworld.WorldScene;
+import javalib.worldimages.OverlayImage;
 import javalib.worldimages.Posn;
+import javalib.worldimages.RectangleImage;
+import javalib.worldimages.TextImage;
 
 public class PlayoffMatches extends World {
   int height;
@@ -66,11 +70,15 @@ public class PlayoffMatches extends World {
   }
   @Override
   public WorldScene makeScene() {
+    
     WorldScene s = new WorldScene(Utils.GAME_SIZE, Utils.GAME_SIZE);
+    WorldScene match = s.placeImageXY(new OverlayImage(new TextImage("MATCHES", Color.BLACK), new RectangleImage(Utils.BUTTON_SIZE, Utils.BUTTON_SIZE, "outline", Color.BLACK))
+        , Utils.BUTTON_SIZE * 5/2, Utils.BUTTON_SIZE/2);
+    WorldScene bar = match.placeImageXY(new RectangleImage(Utils.BUTTON_SIZE, Utils.BUTTON_SIZE *9, "SOLID", Color.BLACK), Utils.BUTTON_SIZE *5/2, Utils.BUTTON_SIZE*11/2);
     WorldScene choices = SKT1.draw(SKT9.draw(Griffin1.draw(Griffin8.draw(GENG2.draw(GENG5.draw
         (JAG2.draw(JAG7.draw(AF3.draw(AF7.draw(HLE3.draw(HLE6.draw
             (KZ4.draw(KZ9.draw(BBQ4.draw(BBQ8.draw(MVP5.draw(MVP10.draw
-                (KT6.draw(KT10.draw(s))))))))))))))))))));
+                (KT6.draw(KT10.draw(bar))))))))))))))))))));
 
     if(this.finish()) {
     this.nameOrder();
@@ -85,16 +93,16 @@ public class PlayoffMatches extends World {
   }
   
   public void initializeTeams() {
-    SKT = new Team("SKT", finalSKTScore, 0, (int) (Utils.BUTTON_SIZE *3.5), 0, Utils.BUTTON_SIZE); 
-    Griffin = new Team("Griffin", finalGriffinScore, 0, (int) (Utils.BUTTON_SIZE *3.5), 0, Utils.BUTTON_SIZE);
-    GENG = new Team("GEN.G", finalGENGScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE);
-    JAG = new Team("JAG", finalJAGScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE); 
-    AF = new Team("AF", finalAFScore, 0,(int)(Utils.BUTTON_SIZE *3.5), 0,Utils.BUTTON_SIZE); 
-    HLE = new Team("HLE", finalHLEScore, 0,(int)(Utils.BUTTON_SIZE *3.5), 0, Utils.BUTTON_SIZE); 
-    KZ = new Team("KZ", finalKZScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE);
-    BBQ = new Team("BBQ", finalBBQScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE); 
-    MVP = new Team("MVP", finalMVPScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE);
-    KT = new Team("KT", finalKTScore, 0,(int)(Utils.BUTTON_SIZE *3.5),0, Utils.BUTTON_SIZE);
+    SKT = new Team("SKT", finalSKTScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
+    Griffin = new Team("Griffin", finalGriffinScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE);
+    GENG = new Team("GEN.G", finalGENGScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    JAG = new Team("JAG", finalJAGScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
+    AF = new Team("AF", finalAFScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0,Utils.BUTTON_SIZE); 
+    HLE = new Team("HLE", finalHLEScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
+    KZ = new Team("KZ", finalKZScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    BBQ = new Team("BBQ", finalBBQScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
+    MVP = new Team("MVP", finalMVPScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    KT = new Team("KT", finalKTScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
     
 
   }

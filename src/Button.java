@@ -23,10 +23,13 @@ class Button {
   //draws a button
   WorldScene draw(WorldScene img) {
     if(!isClicked) {
-      return img.placeImageXY(new OverlayImage(new TextImage(this.text, Color.BLACK), new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
+      return img.placeImageXY(new OverlayImage(new TextImage(this.text, Color.BLACK), 
+          new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
           this.x, this.y);
     }else {
-      return img.placeImageXY(new OverlayImage(new TextImage(this.text, Color.BLACK), new RectangleImage(this.size, this.size, "solid", Color.GRAY)),
+      return img.placeImageXY(new OverlayImage(new TextImage(this.text, Color.BLACK), 
+          new OverlayImage(new RectangleImage(this.size, this.size, "outline", Color.BLACK), 
+              new RectangleImage(this.size, this.size, "solid", Color.GRAY))),
           this.x, this.y);
     }
   }
