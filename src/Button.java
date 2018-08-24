@@ -33,8 +33,9 @@ class Button {
           this.x, this.y);
     }
   }
-  Button changeState() {
-    return new Button(this.x,this.y, this.text, this.size, !this.isClicked);
+  //change to void ...isclicked = !isClicked
+  void changeState() {
+    this.isClicked = !this.isClicked;
   }
 
 

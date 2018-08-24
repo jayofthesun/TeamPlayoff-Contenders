@@ -18,6 +18,7 @@ class ExamplesPlayoffMatches {
     this.initData();
     t.checkExpect(t1.buttonPressed(new Posn(50,50)), Utils.SKT1);
     t.checkExpect(t1.buttonPressed(new Posn(85,50)), Utils.Griffin1);
+    t.checkExpect(t1.buttonPressed(new Posn(310,50)), Utils.firstMatchTwo);
   }
 
   void testdarken(Tester t) {
@@ -127,11 +128,11 @@ class ExamplesPlayoffMatches {
     t1.MVP5.isClicked = true;
     t1.calculateScores();
     t1.initializeTeams();
-    t.checkExpect(t1.SKT,new Team("SKT", t1.finalSKTScore, 0, (int) (Utils.BUTTON_SIZE *3.5), 0, Utils.BUTTON_SIZE));
+    t.checkExpect(t1.SKT,new Team("SKT", t1.finalSKTScore, 0, (int) (Utils.BUTTON_SIZE *3.5) * 2, 0, Utils.BUTTON_SIZE));
     t.checkExpect(t1.SKT.teamName, "SKT");
     t.checkExpect(t1.SKT.finalScore, t1.finalSKTScore);
     t.checkExpect(t1.SKT.place, 0);
-    t.checkExpect(t1.SKT.x,(int) (Utils.BUTTON_SIZE *3.5));
+    t.checkExpect(t1.SKT.x,(int) (Utils.BUTTON_SIZE *3.5)*2);
     t.checkExpect(t1.SKT.y, 0);
     t.checkExpect(t1.SKT.size, Utils.BUTTON_SIZE);
     

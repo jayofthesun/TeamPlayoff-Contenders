@@ -16,7 +16,7 @@ class Team {
     this.teamName = teamName;
     this.finalScore = finalScore;
     this.place = place;
-    this. x = x;
+    this.x = x;
     this.y= y;
     this.size = size;
   }
@@ -39,7 +39,22 @@ class Team {
     return img.placeImageXY(new OverlayImage(new TextImage(this.teamName, Color.BLACK), 
         new RectangleImage(this.size, this.size, "outline", Color.BLACK)), x + Utils.BUTTON_SIZE, y);
   }
-  //  String getName() {
-  //    return this.teamName;
-  //  }
+    String getName() {
+      return this.teamName;
+    }
+    int getScore() {
+      return this.finalScore;
+    }
+    int getPlace() {
+      return this.place;
+    }
+    int getX() {
+      return this.x;
+    }
+    int getY() {
+      return this.y;
+    }
+    int getSize() {
+      return this.size;
+    }
 }

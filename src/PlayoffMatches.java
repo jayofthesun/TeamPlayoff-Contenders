@@ -23,6 +23,19 @@ public class PlayoffMatches extends World {
   Button BBQ4, BBQ8;
   Button MVP5, MVP10;
   Button KT6, KT10;
+  
+  //tells how many games the match is taken in
+  Button firstMatchTwo, firstMatchThree;
+  Button secondMatchTwo, secondMatchThree;
+  Button thirdMatchTwo, thirdMatchThree;
+  Button fourthMatchTwo, fourthMatchThree;
+  Button fifthMatchTwo, fifthMatchThree;
+  Button sixthMatchTwo, sixthMatchThree;
+  Button seventhMatchTwo, seventhMatchThree;
+  Button eighthMatchTwo, eighthMatchThree; 
+  Button ninthMatchTwo, ninthMatchThree;
+  Button tenthMatchTwo, tenthMatchThree;
+  
   Team SKT, Griffin;
   Team GENG, JAG;
   Team AF, HLE; 
@@ -32,6 +45,7 @@ public class PlayoffMatches extends World {
   int SKTScore, GriffinScore, GENGScore, JAGScore, AFScore, HLEScore, KZScore, BBQScore, MVPScore, KTScore;
   int finalSKTScore, finalGriffinScore, finalGENGScore;
   int finalJAGScore, finalAFScore, finalHLEScore, finalKZScore, finalBBQScore, finalMVPScore, finalKTScore;
+  
   ArrayList<String> rank = new ArrayList<String>();
   ArrayList<Team> finalRank = new ArrayList<Team>();
 
@@ -56,6 +70,26 @@ public class PlayoffMatches extends World {
     this.MVP10 = Utils.MVP10;
     this.KT6 = Utils.KT6;
     this.KT10 = Utils.KT10;
+    this.firstMatchThree = Utils.firstMatchThree;
+    this.firstMatchTwo = Utils.firstMatchTwo;
+    this.secondMatchThree = Utils.secondMatchThree;
+    this.secondMatchTwo = Utils.secondMatchTwo;
+    this.thirdMatchThree = Utils.thirdMatchThree;
+    this.thirdMatchTwo = Utils.thirdMatchTwo;
+    this.fourthMatchThree = Utils.fourthMatchThree;
+    this.fourthMatchTwo = Utils.fourthMatchTwo;
+    this.fifthMatchThree = Utils.fifthMatchThree;
+    this.fifthMatchTwo = Utils.fifthMatchTwo;
+    this.sixthMatchThree = Utils.sixthMatchThree;
+    this.sixthMatchTwo = Utils.sixthMatchTwo;
+    this.seventhMatchThree = Utils.seventhMatchThree;
+    this.seventhMatchTwo = Utils.seventhMatchTwo;
+    this.eighthMatchThree = Utils.eighthMatchThree;
+    this.eighthMatchTwo = Utils.eighthMatchTwo;
+    this.ninthMatchThree = Utils.ninthMatchThree;
+    this.ninthMatchTwo = Utils.ninthMatchTwo;
+    this.tenthMatchThree = Utils.tenthMatchThree;
+    this.tenthMatchTwo = Utils.tenthMatchTwo;
     this.SKTScore = 0;
     this.JAGScore = -8;
     this.GriffinScore = 6;
@@ -79,16 +113,21 @@ public class PlayoffMatches extends World {
         (JAG2.draw(JAG7.draw(AF3.draw(AF7.draw(HLE3.draw(HLE6.draw
             (KZ4.draw(KZ9.draw(BBQ4.draw(BBQ8.draw(MVP5.draw(MVP10.draw
                 (KT6.draw(KT10.draw(bar))))))))))))))))))));
+    WorldScene matchScore = tenthMatchThree.draw(tenthMatchTwo.draw(ninthMatchThree.draw(ninthMatchTwo.draw(
+        eighthMatchThree.draw(eighthMatchTwo.draw(seventhMatchThree.draw(seventhMatchTwo.draw(sixthMatchThree.draw(
+            sixthMatchTwo.draw(fifthMatchThree.draw(fifthMatchTwo.draw(fourthMatchThree.draw(fourthMatchTwo.draw(
+                thirdMatchThree.draw(thirdMatchTwo.draw(secondMatchThree.draw(secondMatchTwo.draw(firstMatchThree.draw(
+                    firstMatchTwo.draw(choices))))))))))))))))))));
 
     if(this.finish()) {
     this.nameOrder();
   WorldScene places = SKT.drawPlaces(Griffin.drawPlaces(GENG.drawPlaces(JAG.drawPlaces(AF.drawPlaces
-  (HLE.drawPlaces(KZ.drawPlaces(BBQ.drawPlaces(MVP.drawPlaces(KT.drawPlaces(choices))))))))));
+  (HLE.drawPlaces(KZ.drawPlaces(BBQ.drawPlaces(MVP.drawPlaces(KT.drawPlaces(matchScore))))))))));
   WorldScene all = SKT.drawNames(Griffin.drawNames(GENG.drawNames(JAG.drawNames(AF.drawNames
       (HLE.drawNames(KZ.drawNames(BBQ.drawNames(MVP.drawNames(KT.drawNames(places))))))))));
       return all;
     } else {
-      return choices;
+      return matchScore;
     }
   }
   
@@ -163,133 +202,275 @@ public class PlayoffMatches extends World {
 
     } else if (pos.x < Utils.BUTTON_SIZE*2 && pos.y < Utils.BUTTON_SIZE *10) {
       return KT10;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y < Utils.BUTTON_SIZE) {
+      return firstMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE) {
+      return firstMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 2) {
+      return secondMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 3) {
+      return thirdMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 4) {
+      return fourthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 5) {
+      return fifthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 6) {
+      return sixthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 7) {
+      return seventhMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 8) {
+      return eighthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 9) {
+      return ninthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*4 && pos.x > Utils.BUTTON_SIZE*3 && pos.y< Utils.BUTTON_SIZE * 10) {
+      return tenthMatchTwo;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 2) {
+      return secondMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 3) {
+      return thirdMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 4) {
+      return fourthMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 5) {
+      return fifthMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 6) {
+      return sixthMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 7) {
+      return seventhMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE *8) {
+      return eighthMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE *9) {
+      return ninthMatchThree;
+    } else if (pos.x < Utils.BUTTON_SIZE*5 && pos.x > Utils.BUTTON_SIZE*4 && pos.y< Utils.BUTTON_SIZE * 10) {
+      return tenthMatchThree;
     } else {
       return new Button(0,0,"nothing",0,true);
     }
   }
+  //connect connected pieces
   public World darken(Button name) {
     if(name.equals(this.SKT1)) {
       if(Griffin1.isClicked) {
-        this.Griffin1 = this.Griffin1.changeState();
+        this.Griffin1.changeState();
       }
-      this.SKT1 = this.SKT1.changeState(); 
+      this.SKT1.changeState(); 
 
     } else if(name.equals(this.SKT9)) {
       if(KZ9.isClicked) {
-        this.KZ9 = this.KZ9.changeState();
+        this.KZ9.changeState();
       }
-      this.SKT9 = this.SKT9.changeState();
+      this.SKT9.changeState();
 
     } else if(name.equals(this.Griffin1)) {
       if(SKT1.isClicked) { 
-        this.SKT1 = this.SKT1.changeState();
+       this.SKT1.changeState();
       }
-      this.Griffin1 = this.Griffin1.changeState();
+      this.Griffin1.changeState();
 
     } else if (name.equals(this.Griffin8)) {
       if(BBQ8.isClicked) {
-        this.BBQ8 = this.BBQ8.changeState();
+        this.BBQ8.changeState();
       }
-      this.Griffin8 = this.Griffin8.changeState();
+      this.Griffin8.changeState();
 
     }else if (name.equals(this.GENG2)) {
       if(JAG2.isClicked) {
-        this.JAG2 = this.JAG2.changeState();
+       this.JAG2.changeState();
       }
-      this.GENG2 = this.GENG2.changeState();
+      this.GENG2.changeState();
 
     } else if (name.equals(this.GENG5)) {
       if (MVP5.isClicked) {
-        this.MVP5 = this.MVP5.changeState();
+        this.MVP5.changeState();
       }
-      this.GENG5 = this.GENG5.changeState();
+      this.GENG5.changeState();
 
     } else if (name.equals(this.JAG2)) {
       if(GENG2.isClicked) {
-        this.GENG2 =this.GENG2.changeState();
+        this.GENG2.changeState();
       }
-      this.JAG2 = this.JAG2.changeState();
+      this.JAG2.changeState();
 
     } else if (name.equals(this.JAG7)) {
       if(AF7.isClicked) {
-        this.AF7 = this.AF7.changeState();
+       this.AF7.changeState();
       }
-      this.JAG7 = this.JAG7.changeState();
+      this.JAG7.changeState();
 
     } else if (name.equals(this.AF3)) {
       if(HLE3.isClicked) {
-        this.HLE3 = this.HLE3.changeState();
+        this.HLE3.changeState();
       }
 
-      this.AF3 = this.AF3.changeState();
+      this.AF3.changeState();
 
     } else if (name.equals(this.AF7)) {
       if(JAG7.isClicked) {
-        this.JAG7 = JAG7.changeState();
+        JAG7.changeState();
       }
 
-      this.AF7 = this.AF7.changeState();
+      this.AF7.changeState();
 
     } else if (name.equals(this.HLE3)) {
       if(AF3.isClicked) {
-        this.AF3 = this.AF3.changeState();
+         this.AF3.changeState();
       }
-      this.HLE3 = this.HLE3.changeState();
+      this.HLE3.changeState();
 
     } else if (name.equals(this.HLE6)) {
       if(KT6.isClicked) {
-        this.KT6 = this.KT6.changeState();
+        this.KT6.changeState();
       }
-      this.HLE6 = this.HLE6.changeState();
+      this.HLE6.changeState();
 
     } else if (name.equals(this.KZ4)) {
       if(BBQ4.isClicked) {
-        this.BBQ4 = this.BBQ4.changeState();
+        this.BBQ4.changeState();
       }
-      this.KZ4 = this.KZ4.changeState();
+      this.KZ4.changeState();
 
     } else if (name.equals(this.KZ9)) {
       if(SKT9.isClicked) {
-        this.SKT9 = this.SKT9.changeState();
+       this.SKT9.changeState();
       }
-      this.KZ9 = this.KZ9.changeState();
+      this.KZ9.changeState();
 
     } else if (name.equals(this.BBQ4)) { 
       if(KZ4.isClicked) {
-        this.KZ4 = this.KZ4.changeState();
+        this.KZ4.changeState();
       }
-      this.BBQ4 = this.BBQ4.changeState();
+      this.BBQ4.changeState();
 
     } else if (name.equals(this.BBQ8)) {
       if(Griffin8.isClicked) {
-        this.Griffin8 = this.Griffin8.changeState();
+      this.Griffin8.changeState();
       }
-      this.BBQ8 = this.BBQ8.changeState();
+      this.BBQ8.changeState();
 
     } else if (name.equals(this.MVP5)) {
       if(GENG5.isClicked) {
-        this.GENG5 = this.GENG5.changeState();
+      this.GENG5.changeState();
       }
-      this.MVP5 = this.MVP5.changeState();
+      this.MVP5.changeState();
 
     } else if (name.equals(this.MVP10)) {
       if (KT10.isClicked) {
-        this.KT10 = this.KT10.changeState();
+      this.KT10.changeState();
       }
-      this.MVP10 = this.MVP10.changeState();
+      this.MVP10.changeState();
 
     } else if (name.equals(this.KT6)) {
       if(HLE6.isClicked) {
-        this.HLE6 = this.HLE6.changeState();
+       this.HLE6.changeState();
       }
-      this.KT6 = this.KT6.changeState();
+      this.KT6.changeState();
 
     } else if (name.equals(this.KT10)) {
       if(MVP10.isClicked) {
-        this.MVP10 = this.MVP10.changeState();
+        this.MVP10.changeState();
       }
-      this.KT10 = this.KT10.changeState();
-    }
+      this.KT10.changeState();
+    } else if (name.equals(firstMatchTwo)) {
+      if (firstMatchThree.isClicked) {
+        this.firstMatchThree.changeState();
+      }
+      this.firstMatchTwo.changeState();
+    } else if (name.equals(firstMatchThree)) {
+      if (firstMatchTwo.isClicked) {
+        this.firstMatchTwo.changeState();
+      }
+      this.firstMatchThree.changeState();
+    } else if (name.equals(secondMatchThree)) {
+      if (secondMatchTwo.isClicked) {
+        this.secondMatchTwo.changeState();
+      }
+      this.secondMatchThree.changeState();
+    } else if (name.equals(secondMatchTwo)) {
+     if (secondMatchThree.isClicked) {
+       this.secondMatchThree.changeState();
+     }
+     this.secondMatchTwo.changeState();
+    } else if (name.equals(thirdMatchThree)) {
+    
+      if(thirdMatchTwo.isClicked) {
+        this.thirdMatchTwo.changeState();
+      }
+      this.thirdMatchThree.changeState();
+    } else if (name.equals(thirdMatchTwo)) {
+      if (thirdMatchThree.isClicked) {
+        this.thirdMatchThree.changeState();
+      }
+      this.thirdMatchTwo.changeState();
+    } else if (name.equals(fourthMatchThree)) {
+      if (fourthMatchTwo.isClicked) {
+        this.fourthMatchTwo.changeState();
+      }
+      this.fourthMatchThree.changeState();
+    } else if (name.equals(fourthMatchTwo)) {
+      if(fourthMatchThree.isClicked) {
+        fourthMatchThree.changeState();
+      }
+      fourthMatchTwo.changeState();
+    } else if (name.equals(fifthMatchThree)) {
+      if (fifthMatchTwo.isClicked) {
+        this.fifthMatchTwo.changeState();
+      }
+      this.fifthMatchThree.changeState();
+    } else if (name.equals(fifthMatchTwo)) {
+      if(fifthMatchThree.isClicked) {
+        fifthMatchThree.changeState();
+      }
+      fifthMatchTwo.changeState();
+    } else if (name.equals(sixthMatchThree)) {
+      if (sixthMatchTwo.isClicked) {
+        this.sixthMatchTwo.changeState();
+      }
+      this.sixthMatchThree.changeState();
+    } else if (name.equals(sixthMatchTwo)) {
+      if(sixthMatchThree.isClicked) {
+        sixthMatchThree.changeState();
+      }
+      sixthMatchTwo.changeState();
+    } else if (name.equals(seventhMatchThree)) {
+      if (seventhMatchTwo.isClicked) {
+        this.seventhMatchTwo.changeState();
+      }
+      this.seventhMatchThree.changeState();
+    } else if (name.equals(seventhMatchTwo)) {
+      if(seventhMatchThree.isClicked) {
+        seventhMatchThree.changeState();
+      }
+      seventhMatchTwo.changeState();
+    } else if (name.equals(eighthMatchThree)) {
+      if (eighthMatchTwo.isClicked) {
+        this.eighthMatchTwo.changeState();
+      }
+      this.eighthMatchThree.changeState();
+    } else if (name.equals(eighthMatchTwo)) {
+      if(eighthMatchThree.isClicked) {
+        eighthMatchThree.changeState();
+      }
+      eighthMatchTwo.changeState();
+    } else if (name.equals(ninthMatchThree)) {
+      if (ninthMatchTwo.isClicked) {
+        this.ninthMatchTwo.changeState();
+      }
+      this.ninthMatchThree.changeState();
+    } else if (name.equals(ninthMatchTwo)) {
+      if(ninthMatchThree.isClicked) {
+        ninthMatchThree.changeState();
+      }
+      ninthMatchTwo.changeState();
+    } else if (name.equals(tenthMatchThree)) {
+      if (tenthMatchTwo.isClicked) {
+        this.tenthMatchTwo.changeState();
+      }
+      this.tenthMatchThree.changeState();
+    } else if (name.equals(tenthMatchTwo)) {
+      if(tenthMatchThree.isClicked) {
+        tenthMatchThree.changeState();
+      }
+      tenthMatchTwo.changeState();
+    } 
     return this;
   }
 
@@ -391,7 +572,7 @@ public class PlayoffMatches extends World {
     }
   
   public void location(ArrayList<Team> team) {
-    for(int i=0 ; i<team.size(); i++) {
+    for(int i=0 ; i< team.size(); i++) {
       team.get(i).y = 40 + i * Utils.BUTTON_SIZE;
     }
   }
@@ -404,7 +585,7 @@ public class PlayoffMatches extends World {
     for(int i = 1 ; i< team.size(); i++) {
       int place = 1;
       team.get(0).place = place;
-      if (team.get(i-1).finalScore != team.get(i).finalScore) {
+      if (team.get(i-1).getScore() != team.get(i).getScore()) {
         place = i+1;
         team.get(i).place = place;
 
@@ -426,7 +607,7 @@ public class PlayoffMatches extends World {
   public ArrayList<Team> sortOrder(ArrayList<Team> unordered, Comparator<Integer> comp) {
     for(int i = 1 ; i < unordered.size(); i++) {
       for(int j = i ; j> 0 ; j--) {
-        if (comp.compare(unordered.get(j).finalScore, unordered.get(j-1).finalScore) > 0) {
+        if (comp.compare(unordered.get(j).getScore(), unordered.get(j-1).getScore()) > 0) {
           Collections.swap(unordered, j, j-1);
         }
       }

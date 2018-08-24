@@ -23,6 +23,26 @@ static Button KZ9 = new Button ((int)(BUTTON_SIZE*1.5),(int) (BUTTON_SIZE*8.5),"
 static Button MVP10 = new Button (BUTTON_SIZE/2,(int) (BUTTON_SIZE*9.5),"MVP",BUTTON_SIZE, false);
 static Button KT10 = new Button ((int)(BUTTON_SIZE*1.5),(int) (BUTTON_SIZE*9.5),"KT",BUTTON_SIZE, false);
 
+static Button firstMatchTwo = new Button(BUTTON_SIZE * 7/2, BUTTON_SIZE/2, "2:0 WIN", BUTTON_SIZE, false); 
+static Button firstMatchThree = new Button(BUTTON_SIZE * 9/2,BUTTON_SIZE/2, "2:1 WIN", BUTTON_SIZE, false); 
+static Button secondMatchTwo = new Button(BUTTON_SIZE * 7/2, (int) (BUTTON_SIZE*1.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button secondMatchThree = new Button(BUTTON_SIZE * 9/2, (int) (BUTTON_SIZE*1.5), "2:1 WIN", BUTTON_SIZE, false); 
+static Button thirdMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*2.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button thirdMatchThree = new Button(BUTTON_SIZE * 9/2, (int) (BUTTON_SIZE*2.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button fourthMatchTwo = new Button(BUTTON_SIZE * 7/2, (int) (BUTTON_SIZE*3.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button fourthMatchThree = new Button(BUTTON_SIZE * 9/2,(int) (BUTTON_SIZE*3.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button fifthMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*4.5), "2:0 WIN", BUTTON_SIZE, false); 
+static Button fifthMatchThree = new Button(BUTTON_SIZE * 9/2,(int) (BUTTON_SIZE*4.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button sixthMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*5.5), "2:0 WIN", BUTTON_SIZE, false); 
+static Button sixthMatchThree = new Button(BUTTON_SIZE * 9/2,(int) (BUTTON_SIZE*5.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button seventhMatchTwo = new Button(BUTTON_SIZE * 7/2, (int) (BUTTON_SIZE*6.5), "2:0 WIN", BUTTON_SIZE, false); 
+static Button seventhMatchThree = new Button(BUTTON_SIZE * 9/2, (int) (BUTTON_SIZE*6.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button eighthMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*7.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button eighthMatchThree = new Button(BUTTON_SIZE * 9/2, (int) (BUTTON_SIZE*7.5),"2:1 WIN", BUTTON_SIZE, false); 
+static Button ninthMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*8.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button ninthMatchThree = new Button(BUTTON_SIZE * 9/2,(int) (BUTTON_SIZE*8.5), "2:1 WIN", BUTTON_SIZE, false);
+static Button tenthMatchTwo = new Button(BUTTON_SIZE * 7/2,(int) (BUTTON_SIZE*9.5), "2:0 WIN", BUTTON_SIZE, false);
+static Button tenthMatchThree = new Button( Utils.BUTTON_SIZE * 9/2,(int) (BUTTON_SIZE*9.5), "2:1 WIN", BUTTON_SIZE, false);
 
 
 }
