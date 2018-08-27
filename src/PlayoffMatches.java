@@ -43,8 +43,8 @@ public class PlayoffMatches extends World {
   Team MVP, KT;
   //subtracts wins from losses 
   int SKTScore, GriffinScore, GENGScore, JAGScore, AFScore, HLEScore, KZScore, BBQScore, MVPScore, KTScore;
-  int finalSKTScore, finalGriffinScore, finalGENGScore;
-  int finalJAGScore, finalAFScore, finalHLEScore, finalKZScore, finalBBQScore, finalMVPScore, finalKTScore;
+  int SKTmatchScore, GriffinmatchScore, GENGmatchScore, JAGmatchScore, AFmatchScore, HLEmatchScore,
+  KZmatchScore, BBQmatchScore, MVPmatchScore, KTmatchScore;
   
   ArrayList<String> rank = new ArrayList<String>();
   ArrayList<Team> finalRank = new ArrayList<Team>();
@@ -100,6 +100,16 @@ public class PlayoffMatches extends World {
     this.KTScore = 6;
     this.MVPScore = -8;
     this.BBQScore = -12;
+    this.SKTmatchScore = 0;
+    this.GriffinmatchScore = 11;
+    this.GENGmatchScore = 9; 
+    this.JAGmatchScore = -14;
+    this.AFmatchScore = 5;
+    this.HLEmatchScore = 5;
+    this.KZmatchScore = 9;
+    this.BBQmatchScore = -21;
+    this.MVPmatchScore = -15;
+    this.KTmatchScore = 11;
     
   }
   @Override
@@ -125,23 +135,26 @@ public class PlayoffMatches extends World {
   (HLE.drawPlaces(KZ.drawPlaces(BBQ.drawPlaces(MVP.drawPlaces(KT.drawPlaces(matchScore))))))))));
   WorldScene all = SKT.drawNames(Griffin.drawNames(GENG.drawNames(JAG.drawNames(AF.drawNames
       (HLE.drawNames(KZ.drawNames(BBQ.drawNames(MVP.drawNames(KT.drawNames(places))))))))));
-      return all;
+  WorldScene newAll = SKT.drawMatchPoint(Griffin.drawMatchPoint(GENG.drawMatchPoint(JAG.drawMatchPoint(AF.drawMatchPoint
+      (HLE.drawMatchPoint(KZ.drawMatchPoint(BBQ.drawMatchPoint(MVP.drawMatchPoint(KT.drawMatchPoint(all))))))))));
+  
+      return newAll;
     } else {
       return matchScore;
     }
   }
   
   public void initializeTeams() {
-    SKT = new Team("SKT", finalSKTScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
-    Griffin = new Team("Griffin", finalGriffinScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE);
-    GENG = new Team("GEN.G", finalGENGScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    JAG = new Team("JAG", finalJAGScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
-    AF = new Team("AF", finalAFScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0,Utils.BUTTON_SIZE); 
-    HLE = new Team("HLE", finalHLEScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
-    KZ = new Team("KZ", finalKZScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    BBQ = new Team("BBQ", finalBBQScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
-    MVP = new Team("MVP", finalMVPScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    KT = new Team("KT", finalKTScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    SKT = new Team("SKT", SKTmatchScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
+    Griffin = new Team("Griffin", GriffinmatchScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE);
+    GENG = new Team("GEN.G", GENGmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    JAG = new Team("JAG", JAGmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
+    AF = new Team("AF", AFmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0,Utils.BUTTON_SIZE); 
+    HLE = new Team("HLE", HLEmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
+    KZ = new Team("KZ", KZmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    BBQ = new Team("BBQ", BBQmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
+    MVP = new Team("MVP", MVPmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    KT = new Team("KT", KTmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
     
 
   }
@@ -477,92 +490,309 @@ public class PlayoffMatches extends World {
   public boolean finish() {
     return (SKT1.isClicked || Griffin1.isClicked) && (GENG2.isClicked || JAG2.isClicked) && (AF3.isClicked || HLE3.isClicked) &&
         (BBQ4.isClicked|| KZ4.isClicked) && (MVP5.isClicked || GENG5.isClicked) && (HLE6.isClicked|| KT6.isClicked) && (JAG7.isClicked || AF7.isClicked) 
-        && (Griffin8.isClicked|| BBQ8.isClicked) && (SKT9.isClicked || KZ9.isClicked) && (KT10.isClicked||MVP10.isClicked); 
+        && (Griffin8.isClicked|| BBQ8.isClicked) && (SKT9.isClicked || KZ9.isClicked) && (KT10.isClicked||MVP10.isClicked)
+        && this.matchFinish(); 
   }
-
+  
+  public boolean matchFinish() {
+    return (firstMatchTwo.isClicked || firstMatchThree.isClicked) && (secondMatchTwo.isClicked || secondMatchThree.isClicked) && (thirdMatchTwo.isClicked || thirdMatchThree.isClicked)
+        && (fourthMatchTwo.isClicked || fourthMatchThree.isClicked) && (fifthMatchTwo.isClicked || fifthMatchThree.isClicked) && (sixthMatchTwo.isClicked || sixthMatchThree.isClicked)
+        && (seventhMatchTwo.isClicked || seventhMatchThree.isClicked) && (eighthMatchTwo.isClicked || eighthMatchThree.isClicked) && (ninthMatchTwo.isClicked || ninthMatchThree.isClicked)
+        && (tenthMatchTwo.isClicked || tenthMatchThree.isClicked);
+  }
+  public void resetMatchPoints() {
+    this.SKTmatchScore = 0;
+    this.GriffinmatchScore = 11;
+    this.GENGmatchScore = 9; 
+    this.JAGmatchScore = -14;
+    this.AFmatchScore = 5;
+    this.HLEmatchScore = 5;
+    this.KZmatchScore = 9;
+    this.BBQmatchScore = -21;
+    this.MVPmatchScore = -15;
+    this.KTmatchScore = 11;
+  }
+  
+  public void calculateMatchScores() {
+    if(SKT1.getisClicked()) {
+      if(firstMatchTwo.getisClicked()) {
+        SKTmatchScore += 2;
+        GriffinmatchScore -= 2;
+      } else if (firstMatchThree.getisClicked()) {
+        SKTmatchScore += 1;
+        GriffinmatchScore -= 1;
+      }
+    }
+    
+    if (Griffin1.getisClicked()) {
+      if(firstMatchTwo.getisClicked()) {
+        GriffinmatchScore += 2;
+        SKTmatchScore -= 2;
+      } else if (firstMatchThree.getisClicked()) {
+        SKTmatchScore -= 1;
+        GriffinmatchScore += 1;
+      }
+    }
+    
+    if(JAG2.getisClicked()) {
+      if(secondMatchTwo.getisClicked()) {
+        JAGmatchScore += 2;
+        GENGmatchScore -= 2;
+      } else if (secondMatchThree.getisClicked()) {
+        JAGmatchScore += 1;
+        GENGmatchScore -= 1;
+      }
+    }
+    
+    if(GENG2.getisClicked()) {
+      if(secondMatchTwo.getisClicked()) {
+        JAGmatchScore -= 2;
+        GENGmatchScore += 2;
+      } else if (secondMatchThree.getisClicked()) {
+        JAGmatchScore -= 1;
+        GENGmatchScore += 1;
+      }
+    }
+    if(AF3.getisClicked()) {
+      if(thirdMatchTwo.getisClicked()) {
+        AFmatchScore += 2;
+        HLEmatchScore -= 2;
+      } else if (thirdMatchThree.getisClicked()) {
+        AFmatchScore += 1;
+        HLEmatchScore -= 1;
+      }
+    }
+    
+    if(HLE3.getisClicked()) {
+      if(thirdMatchTwo.getisClicked()) {
+        AFmatchScore -= 2;
+        HLEmatchScore += 2;
+      } else if (thirdMatchThree.getisClicked()) {
+        AFmatchScore -= 1;
+        HLEmatchScore += 1;
+      }
+    }
+    
+    if(KZ4.getisClicked()) {
+      if(fourthMatchTwo.getisClicked()) {
+        KZmatchScore += 2;
+        BBQmatchScore -= 2;
+      } else if (fourthMatchThree.getisClicked()) {
+        KZmatchScore += 1;
+        BBQmatchScore -= 1;
+      }
+    }
+    
+    if(BBQ4.getisClicked()) {
+      if(fourthMatchTwo.getisClicked()) {
+        KZmatchScore -= 2;
+        BBQmatchScore += 2;
+      } else if (fourthMatchThree.getisClicked()) {
+        KZmatchScore -= 1;
+        BBQmatchScore += 1;
+      }
+    }
+    
+    if(GENG5.getisClicked()) {
+      if(fifthMatchTwo.getisClicked()) {
+        GENGmatchScore += 2;
+        MVPmatchScore -= 2;
+      } else if (fifthMatchThree.getisClicked()) {
+        GENGmatchScore += 1;
+        MVPmatchScore -= 1;
+      }
+    }
+    
+    if(MVP5.getisClicked()) {
+      if(fifthMatchTwo.getisClicked()) {
+        GENGmatchScore -= 2;
+        MVPmatchScore += 2;
+      } else if (fifthMatchThree.getisClicked()) {
+        GENGmatchScore -= 1;
+        MVPmatchScore += 1;
+      }
+    }
+    
+    if(HLE6.getisClicked()) {
+      if(sixthMatchTwo.getisClicked()) {
+        HLEmatchScore += 2;
+        KTmatchScore -= 2;
+      } else if (sixthMatchThree.getisClicked()) {
+        HLEmatchScore += 1;
+        KTmatchScore -= 1;
+      }
+    }
+    
+    if(KT6.getisClicked()) {
+      if(sixthMatchTwo.getisClicked()) {
+        HLEmatchScore -= 2;
+        KTmatchScore += 2;
+      } else if (sixthMatchThree.getisClicked()) {
+        HLEmatchScore -= 1;
+        KTmatchScore += 1;
+      }
+    }
+    
+    if(AF7.getisClicked()) {
+      if(seventhMatchTwo.getisClicked()) {
+        AFmatchScore += 2;
+        JAGmatchScore -= 2;
+      } else if (seventhMatchThree.getisClicked()) {
+        AFmatchScore += 1;
+        JAGmatchScore -= 1;
+      }
+    }
+    
+    if(JAG7.getisClicked()) {
+      if(seventhMatchTwo.getisClicked()) {
+        AFmatchScore -= 2;
+        JAGmatchScore += 2;
+      } else if (seventhMatchThree.getisClicked()) {
+        AFmatchScore -= 1;
+        JAGmatchScore += 1;
+      }
+    }
+    
+    if(Griffin8.getisClicked()) {
+      if(eighthMatchTwo.getisClicked()) {
+        GriffinmatchScore += 2;
+        BBQmatchScore -= 2;
+      } else if (eighthMatchThree.getisClicked()) {
+        GriffinmatchScore += 1;
+        BBQmatchScore -= 1;
+      }
+    }
+    
+    if(BBQ8.getisClicked()) {
+      if(eighthMatchTwo.getisClicked()) {
+        GriffinmatchScore -= 2;
+        BBQmatchScore += 2;
+      } else if (eighthMatchThree.getisClicked()) {
+        GriffinmatchScore -= 1;
+        BBQmatchScore += 1;
+      }
+    }
+    
+    if(SKT9.getisClicked()) {
+      if(ninthMatchTwo.getisClicked()) {
+        SKTmatchScore += 2;
+        KZmatchScore -= 2;
+      } else if (ninthMatchThree.getisClicked()) {
+        SKTmatchScore += 1;
+        KZmatchScore -= 1;
+      }
+    }
+    
+    if(KZ9.getisClicked()) {
+      if(ninthMatchTwo.getisClicked()) {
+        SKTmatchScore -= 2;
+        KZmatchScore += 2;
+      } else if (ninthMatchThree.getisClicked()) {
+        SKTmatchScore -= 1;
+        KZmatchScore += 1;
+      }
+    }
+    
+    if(MVP10.getisClicked()) {
+      if(tenthMatchTwo.getisClicked()) {
+        MVPmatchScore += 2;
+        KTmatchScore -= 2;
+      } else if (tenthMatchThree.getisClicked()) {
+        MVPmatchScore += 1;
+        KTmatchScore -= 1;
+      }
+    }
+    
+    if(MVP10.getisClicked()) {
+      if(tenthMatchTwo.getisClicked()) {
+        MVPmatchScore -= 2;
+        KTmatchScore += 2;
+      } else if (tenthMatchThree.getisClicked()) {
+        MVPmatchScore -= 1;
+        KTmatchScore += 1;
+      }
+    }
+    
+  }
+  
+public void resetScores() {
+  this.SKTScore = 0;
+  this.JAGScore = -8;
+  this.GriffinScore = 6;
+  this.GENGScore = 6;
+  this.KZScore = 6;
+  this.AFScore = 2;
+  this.HLEScore = 2;
+  this.KTScore = 6;
+  this.MVPScore = -8;
+  this.BBQScore = -12;
+}
   public void calculateScores() {
     if (SKT1.isClicked && SKT9.isClicked) {
-      finalSKTScore = SKTScore + 2;
+     SKTScore += 2;
     } else if (!SKT1.isClicked && !SKT9.isClicked) {
-      finalSKTScore = SKTScore - 2;
-    } else {
-      finalSKTScore = SKTScore;
+      SKTScore -= 2;
     }
 
     if (Griffin1.isClicked && Griffin8.isClicked) {
-      finalGriffinScore = GriffinScore + 2;
+      GriffinScore += 2;
     } else if (!Griffin1.isClicked && !Griffin8.isClicked) {
-      finalGriffinScore = GriffinScore - 2;
-    } else {
-      finalGriffinScore = GriffinScore;
-    }
+     GriffinScore -= 2;
+    } 
 
     if(GENG2.isClicked && GENG5.isClicked) {
-      finalGENGScore = GENGScore + 2;
+     GENGScore += 2;
     } else if (!GENG2.isClicked && !GENG5.isClicked) {
-      finalGENGScore = GENGScore - 2;
-    } else {
-      finalGENGScore = GENGScore;
-    }
+      GENGScore -= 2;
+    } 
 
     if(JAG2.isClicked && JAG7.isClicked) {
-      finalJAGScore = JAGScore + 2;
+      JAGScore += 2;
     } else if (!JAG2.isClicked && !JAG7.isClicked) {
-      finalJAGScore = JAGScore - 2;
-    } else {
-      finalJAGScore = JAGScore;
+      JAGScore -= 2;
     }
 
     if(AF3.isClicked && AF7.isClicked) {
-      finalAFScore = AFScore + 2;
+      AFScore += 2;
     } else if (!AF3.isClicked && !AF7.isClicked) {
-      finalAFScore = AFScore - 2;
-    } else {
-      finalAFScore = AFScore;
-    }
+      AFScore -= 2;
+    } 
 
     if(HLE3.isClicked && HLE6.isClicked) {
-      finalHLEScore = HLEScore + 2;
+      HLEScore += 2;
     } else if (!HLE3.isClicked && !HLE6.isClicked) {
-      finalHLEScore = HLEScore - 2;
-    } else {
-      finalHLEScore = HLEScore;
-    }
+      HLEScore -= 2;
+    } 
 
     if(BBQ4.isClicked && BBQ8.isClicked) {
-      finalBBQScore = BBQScore + 2;
+      BBQScore += 2;
     } else if (!BBQ4.isClicked && !BBQ8.isClicked) {
-      finalBBQScore = BBQScore - 2;
-    } else { 
-      finalBBQScore = BBQScore;
-    }
+      BBQScore =- 2;
+    } 
 
     if(KZ4.isClicked && KZ9.isClicked) {
-      finalKZScore = KZScore + 2;
+      KZScore += 2;
     } else if (!KZ4.isClicked && !KZ9.isClicked) {
-      finalKZScore = KZScore - 2;
-    } else {
-      finalKZScore = KZScore;
-    }
+      KZScore =- 2;
+    } 
 
     if (MVP5.isClicked && MVP10.isClicked) {
-      finalMVPScore = MVPScore + 2;
+      MVPScore += 2;
     } else if (!MVP5.isClicked && !MVP10.isClicked) {
-      finalMVPScore = MVPScore - 2;
-    } else {
-      finalMVPScore = MVPScore;
+      MVPScore -= 2;
     }
 
     if(KT6.isClicked && KT10.isClicked) {
-      finalKTScore = KTScore + 2;
+     KTScore += 2;
     } else if (!KT6.isClicked && !KT10.isClicked) {
-      finalKTScore = KTScore - 2;
-    } else {
-      finalKTScore = KTScore;
-    }
+     KTScore -= 2;
+    } 
   }
 
   public void nameOrder() {
+      this.resetMatchPoints();
+      this.resetScores();
+      this.calculateMatchScores();
       this.calculateScores();
       this.initializeTeams();
       finalRank = sortOrder(this.scoreRank(), new IntComparator());

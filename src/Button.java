@@ -29,7 +29,7 @@ class Button {
     }else {
       return img.placeImageXY(new OverlayImage(new TextImage(this.text, Color.BLACK), 
           new OverlayImage(new RectangleImage(this.size, this.size, "outline", Color.BLACK), 
-              new RectangleImage(this.size, this.size, "solid", Color.GRAY))),
+              new RectangleImage(this.size, this.size, "solid", Color.GREEN))),
           this.x, this.y);
     }
   }
@@ -37,6 +37,21 @@ class Button {
   void changeState() {
     this.isClicked = !this.isClicked;
   }
-
+  int getX() {
+    return this.x;
+   
+  }
+  int getY() {
+    return this.y;
+  }
+  String getText() {
+    return this.text;
+  }
+  int getSize() {
+    return this.size;
+  }
+  boolean getisClicked() {
+    return this.isClicked;
+  }
 
 }

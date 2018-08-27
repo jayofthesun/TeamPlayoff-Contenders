@@ -20,6 +20,11 @@ class Team {
     this.y= y;
     this.size = size;
   }
+  WorldScene drawMatchPoint(WorldScene img) {
+    return img.placeImageXY(new OverlayImage(new TextImage(Integer.toString(this.finalScore), Color.BLACK), 
+        new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
+        this.x + 2* Utils.BUTTON_SIZE, this.y);
+  }
 
   WorldScene drawPlaces (WorldScene img) {
     if (this.place >5) {
