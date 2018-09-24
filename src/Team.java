@@ -23,7 +23,7 @@ class Team {
   WorldScene drawMatchPoint(WorldScene img) {
     return img.placeImageXY(new OverlayImage(new TextImage(Integer.toString(this.finalScore), Color.BLACK), 
         new RectangleImage(this.size, this.size, "outline", Color.BLACK)),
-        this.x + 2* Utils.BUTTON_SIZE, this.y);
+        this.x + 3* Utils.BUTTON_SIZE, this.y);
   }
 
   WorldScene drawPlaces (WorldScene img) {

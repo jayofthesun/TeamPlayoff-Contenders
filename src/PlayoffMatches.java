@@ -9,7 +9,50 @@ import javalib.worldimages.OverlayImage;
 import javalib.worldimages.Posn;
 import javalib.worldimages.RectangleImage;
 import javalib.worldimages.TextImage;
+/*
+ *Griffin 11-5  11
+ *Gen.G 11-5 9
+ *King-Zone 11-5 9
+ *Africa Freecs 9-7 5
+ *Hanhwa 9-7 5
+ *Kt- Rolster 11-5  11
+ *MVP 4-12  -15
+ *SK telecom T1 8–8 0
+ *Jin Air GreenWings 4-12 -14
+ *BBQ olivers 2-14 -21
+ *
+ *SKT GRIFFIN
+ *GEN.G JAG
+ *AF HLE
+ *KZ BBQ
+ *GEN.G MVP 
+ *HLE KT
+ *AF JAG
+ *Griffin BBQ
+ *SKT KZ
+ *MVP KT 
 
+
+Notes:
+
+10 teams
+First mode: Based of game score not amount of wins or losses, programmed as starting value of a team
+Second mode: By point value 
+
+Program collects number data for all teams then arranges in order 
+
+User should be able to click matches as they predict its outcome
+First Mode: W/L
+Second Mode: 
+three games green win red loss grey is default mode/there were no more matches 
+mode left on win = 1
+mode left on loss = -1
+mode left on grey = 0
+
+
+In board format
+
+ */
 public class PlayoffMatches extends World {
   int height;
   int width; 
@@ -137,24 +180,26 @@ public class PlayoffMatches extends World {
       (HLE.drawNames(KZ.drawNames(BBQ.drawNames(MVP.drawNames(KT.drawNames(places))))))))));
   WorldScene newAll = SKT.drawMatchPoint(Griffin.drawMatchPoint(GENG.drawMatchPoint(JAG.drawMatchPoint(AF.drawMatchPoint
       (HLE.drawMatchPoint(KZ.drawMatchPoint(BBQ.drawMatchPoint(MVP.drawMatchPoint(KT.drawMatchPoint(all))))))))));
-  
-      return newAll;
+  WorldScene newAllwBar =newAll.placeImageXY(new RectangleImage(Utils.BUTTON_SIZE, Utils.BUTTON_SIZE *9, "SOLID", Color.BLACK), (int) (Utils.BUTTON_SIZE *8.5), Utils.BUTTON_SIZE*11/2);
+  WorldScene matchPointScores = newAllwBar.placeImageXY(new OverlayImage(new TextImage("SCORE", Color.BLACK), new RectangleImage(Utils.BUTTON_SIZE, Utils.BUTTON_SIZE, "outline", Color.BLACK)),
+      (int)(Utils.BUTTON_SIZE * 8.5), Utils.BUTTON_SIZE/2);
+      return matchPointScores;
     } else {
       return matchScore;
     }
   }
   
   public void initializeTeams() {
-    SKT = new Team("SKT", SKTmatchScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
-    Griffin = new Team("Griffin", GriffinmatchScore, 0, (int) (Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE);
-    GENG = new Team("GEN.G", GENGmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    JAG = new Team("JAG", JAGmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
-    AF = new Team("AF", AFmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0,Utils.BUTTON_SIZE); 
-    HLE = new Team("HLE", HLEmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2, 0, Utils.BUTTON_SIZE); 
-    KZ = new Team("KZ", KZmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    BBQ = new Team("BBQ", BBQmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE); 
-    MVP = new Team("MVP", MVPmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
-    KT = new Team("KT", KTmatchScore, 0,(int)(Utils.BUTTON_SIZE *3.5)*2,0, Utils.BUTTON_SIZE);
+    SKT = new Team("SKT", SKTmatchScore, 0, (int) (Utils.BUTTON_SIZE *6.5), 0, Utils.BUTTON_SIZE); 
+    Griffin = new Team("Griffin", GriffinmatchScore, 0, (int) (Utils.BUTTON_SIZE *6.5), 0, Utils.BUTTON_SIZE);
+    GENG = new Team("GEN.G", GENGmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE);
+    JAG = new Team("JAG", JAGmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE); 
+    AF = new Team("AF", AFmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5), 0,Utils.BUTTON_SIZE); 
+    HLE = new Team("HLE", HLEmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5), 0, Utils.BUTTON_SIZE); 
+    KZ = new Team("KZ", KZmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE);
+    BBQ = new Team("BBQ", BBQmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE); 
+    MVP = new Team("MVP", MVPmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE);
+    KT = new Team("KT", KTmatchScore, 0,(int)(Utils.BUTTON_SIZE *6.5),0, Utils.BUTTON_SIZE);
     
 
   }
